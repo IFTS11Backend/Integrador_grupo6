@@ -1,0 +1,19 @@
+.fecha_hora {
+  margin-right: 2em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+article,
+img {
+  height: 100%;
+}

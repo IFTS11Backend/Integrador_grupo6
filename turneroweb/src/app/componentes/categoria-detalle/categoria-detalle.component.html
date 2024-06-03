@@ -1,0 +1,14 @@
+<div class="container">  
+  <div>
+    <!-- Muestra cada turno del arreglo-->
+    <table class="table table-hover">
+      <tbody>
+        @for(turno of turnos; track $index){
+        <tr class="text-center">
+          <th>{{ turno }}</th>
+        </tr>
+      }
+      </tbody>
+    </table>    
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container my-5">
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categoria', 'perros']">Perros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categoria', 'gatos']">Gatos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categoria', 'animales-exoticos']">Anim. Exóticos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categoria', 'vacunacion']">Vacunatorio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categoria', 'compras']">Compras</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
