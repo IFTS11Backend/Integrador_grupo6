@@ -1,11 +1,44 @@
+
 @if (vistaHeader) {
-    <app-header></app-header>
+<app-header></app-header>
 }
-
 <app-navbar></app-navbar>
-<div class="container">
+
+<div
+  class="container-fluid position-absolute bottom-0 pb-5 ContenedorBotoneraYDetalle"
+>
   <app-categoria-detalle></app-categoria-detalle>
+
+  <div class="container float-start m-0 p-0 Botonera">
+    <button
+      type="button"
+      title="Borrar todos los turnos diarios"
+      class="btn btn-danger p-3 fs-5"
+    >
+      Reset Diario
+    </button>
+
+    <a class="nav-link mt-2" routerLink="/seguridad">
+      <button
+        type="button"
+        title="Recargar pagina actual"
+        class="btn btn-warning"
+      >
+        Recargar
+      </button>
+    </a>
+  </div>
+
+  <div class="container Botonera">
+    <div class="turno">
+      <button
+        title="Cancelar turno"
+        type="button"
+        class="btn btn-light border round p-3 fs-5 d-flex flex-column"
+      >
+        <span class="mx-auto">❌</span>
+        <span> Cancelar </span>
+      </button>      
+    </div>
+  </div>
 </div>
-
-
-
