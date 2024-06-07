@@ -1,14 +1,16 @@
-<div class="container">  
-  <div>
-    <!-- Muestra cada turno del arreglo-->
-    <table class="table table-hover">
-      <tbody>
-        @for(turno of turnos; track $index){
-        <tr class="text-center">
-          <th>{{ turno }}</th>
-        </tr>
+<div class="container">
+  <!-- Muestra cada turno del arreglo-->
+  @if(turnosFiltrados.length > 0){
+  <table class="table table-hover">
+    <tbody>
+      @for(turno of turnosFiltrados; track trackById){
+      <tr class="text-center">
+        <th (click)="verTurnoDetalle(turno._id)">
+          {{ turno.numero }}
+        </th>
+      </tr>
       }
-      </tbody>
-    </table>    
-  </div>
+    </tbody>
+  </table>
+  }
 </div>
