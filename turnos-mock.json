@@ -1,0 +1,121 @@
+{
+  "turnos": [
+    {
+      "_id": "46541",
+      "fecha": "4/06/2024",
+      "hora": "10:00",
+      "categoria": "perros",
+      "numero": 25,
+      "nombre": "Juan",
+      "estado": "en espera"
+    },
+    {
+      "_id": "55",
+      "fecha": "4/06/2024",
+      "hora": "10:10",
+      "categoria": "perros",
+      "numero": 26,
+      "nombre": "Rodolfo",
+      "estado": "en espera"
+    },
+    {
+      "_id": "651",
+      "fecha": "4/06/2024",
+      "hora": "10:15",
+      "categoria": "perros",
+      "numero": 27,
+      "nombre": "Daniela",
+      "estado": "en espera"
+    },
+    {
+      "_id": "1guu5",
+      "fecha": "4/06/2024",
+      "hora": "10:30",
+      "categoria": "perros",
+      "numero": 28,
+      "nombre": "Rodrigo",
+      "estado": "en espera"
+    },
+    {
+      "_id": "2hoh88",
+      "fecha": "4/06/2024",
+      "hora": "10:30",
+      "categoria": "gatos",
+      "numero": 3,
+      "nombre": "Pedro",
+      "estado": "atendido"
+    },
+    {
+      "_id": "gg255gg",
+      "fecha": "4/06/2024",
+      "hora": "10:30",
+      "categoria": "gatos",
+      "numero": 4,
+      "nombre": "Pedro",
+      "estado": "atendido"
+    },
+    {
+      "_id": "2876hih",
+      "fecha": "4/06/2024",
+      "hora": "10:30",
+      "categoria": "gatos",
+      "numero": 5,
+      "nombre": "Pedro",
+      "estado": "atendido"
+    },
+    {
+      "_id": "3",
+      "fecha": "4/06/2024",
+      "hora": "11:00",
+      "categoria": "vacunacion",
+      "numero": 1,
+      "nombre": "Maria",
+      "estado": "atendiendo"
+    },
+    {
+      "_id": "4545uyguy",
+      "fecha": "4/06/2024",
+      "hora": "11:30",
+      "categoria": "exoticos",
+      "numero": 4,
+      "nombre": "Ana",
+      "estado": "cancelado"
+    },
+    {
+      "_id": "545uh7",
+      "fecha": "4/06/2024",
+      "hora": "17:00",
+      "categoria": "vacunacion",
+      "numero": 2,
+      "nombre": "Maria",
+      "estado": "atendiendo"
+    },
+    {
+      "_id": "8tres7",
+      "fecha": "4/06/2024",
+      "hora": "11:30",
+      "categoria": "compras",
+      "numero": 79,
+      "nombre": "Josefina",
+      "estado": "en espera"
+    },
+    {
+      "_id": "8t4s",
+      "fecha": "4/06/2024",
+      "hora": "11:30",
+      "categoria": "compras",
+      "numero": 80,
+      "nombre": "Claudia",
+      "estado": "en espera"
+    },
+    {
+      "_id": "8yu87",
+      "fecha": "4/06/2024",
+      "hora": "11:30",
+      "categoria": "compras",
+      "numero": 81,
+      "nombre": "Juli",
+      "estado": "en espera"
+    }
+  ]
+}
