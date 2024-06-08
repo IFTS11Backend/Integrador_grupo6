@@ -7,6 +7,7 @@
 <div
   class="container-fluid position-absolute bottom-0 pb-5 ContenedorBotoneraYDetalle"
 >
+<!-- Este componente es el que muestra unicamente los turnos -->
   <app-categoria-detalle></app-categoria-detalle>
 
   <div class="container float-start m-0 p-0 Botonera">
@@ -14,6 +15,7 @@
       type="button"
       title="Borrar todos los turnos diarios"
       class="btn btn-danger p-3 fs-5"
+      (click)="eliminarTodo()"
     >
       Reset Diario
     </button>
@@ -30,15 +32,23 @@
   </div>
 
   <div class="container Botonera">
-    <div class="turno">
+    <div class="turno d-flex flex-row-reverse align-items-center justify-content-end">
+      <div class="d-block TurnoDetalle">
+       
+        <p>Nombre: {{turno?.nombre}}</p>
+        <p>Categoria: {{turno?.categoria}}</p>
+       
+      </div>
       <button
         title="Cancelar turno"
         type="button"
-        class="btn btn-light border round p-3 fs-5 d-flex flex-column"
+        class="btn btn-light border round p-1 fs-5 d-flex flex-column"
+        (click)="cancelarTurno()"
       >
         <span class="mx-auto">❌</span>
         <span> Cancelar </span>
-      </button>      
+      </button>  
+          
     </div>
   </div>
 </div>

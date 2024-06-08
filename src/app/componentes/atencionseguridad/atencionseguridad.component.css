@@ -10,6 +10,17 @@
     padding-left: 3rem;
 }
 
+.TurnoDetalle{
+    display: flex;
+    flex-direction: column;
+    line-height: 0.7em;
+    margin-left: 3rem;
+}
+
+.btn-dander .btn-light{
+    border-radius: 26px;
+}
+
 .Botonera{
     display: inline-block;
     width: 10rem;
@@ -22,3 +33,5 @@
     justify-content:space-around;
     align-items: center;
 }
+
+

@@ -15,15 +15,28 @@ export class HeaderComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.categoria = params['categoria'];
+  ngOnInit(): void {
+    this.route.url.subscribe((url) => {
+      this.categoria = url[0].path;
+      console.log('Categoria: ', this.categoria);
+      switch (this.categoria) {
+        case 'salon':
+          this.categoria = 'Salón de Espera';
+          break;
+        case 'atencion':
+          this.categoria = 'Atención Particular';
+          break;
+        case 'seguridad':
+          this.categoria = 'Atención Seguridad';
+          break;
+        default:
+          this.categoria = 'Home';
+          break;
+      }
     });
-    console.log('Categoria: ', this.categoria);
 
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
-  
   }
 }
