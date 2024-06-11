@@ -47,17 +47,17 @@
   <div class="container text-center">
     <div class="row">
     <div class="col">
-    <button type="button" class="btn btn-primary" (click)="generarTurno('Perros')">
+    <button type="button" class="btn btn-primary" (click)="submit('Perros')">
       <img src="../../../assets/img/perrotpb2.jpg" class="img-fluid" alt="..."></button>
     <strong>Perros</strong>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-primary" (click)="generarTurno('Gatos')">
+      <button type="button" class="btn btn-primary" (click)="submit('Gatos')">
         <img src="../../../assets/img/gatotpb2.jpg" class="img-fluid" alt="..."></button>
     <strong>Gatos</strong>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-primary" (click)="generarTurno('Animales Exoticos')">
+      <button type="button" class="btn btn-primary" (click)="submit('Animales Exoticos')">
         <img src="../../../assets/img/exoticostpb2.jpg" class="img-fluid" alt="..."></button>
       <strong>Animales Exoticos</strong>
     </div>
@@ -69,7 +69,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col">
-        <button type="button" class="btn btn-primary" (click)="generarTurno('Vacunacion')">
+        <button type="button" class="btn btn-primary" (click)="submit('Vacunacion')">
           <img src="../../../assets/img/vacunatpb2.jpg" class="img-fluid" alt="..."></button>
         <strong>Vacunacion</strong>
         </div>
@@ -78,21 +78,21 @@
           
         </div>
         <div class="col">
-          <button type="button" class="btn btn-primary" (click)="generarTurno('Compras')">
+          <button type="button" class="btn btn-primary" (click)="submit('Compras')">
             <img src="../../../assets/img/comprastpb2.jpg" class="img-fluid" alt="..."></button>
           <strong>Compras</strong>
         </div>
         </div>
-        <br><br><br>
+        <br>
         
   
         <!-- Mostrar turno -->
          
-        <div  id="pruebaDatos">
+        <!-- <div  id="pruebaDatos">
           <h2>Turno Generado</h2>
-          <p>Nombre: {{ nombreGenerado }}</p>
-          <p>Tipo de Turno: {{ categoria }}</p>
-        </div>
+          <p>Nombre: {{ turno.nombre }}</p>
+          <p>Tipo de Turno: {{ turno.categoria }}</p>
+        </div> -->
         
         <br><br>
         

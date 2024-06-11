@@ -13,25 +13,29 @@ export class EntradaComponent {
 
   nombre: string = '';
   turnoGenerado: boolean = false;
-  nombreGenerado: string = '';
-  categoria: string = '';
+  turno: { nombre: string, categoria: string } = { nombre: '', categoria: '' };
 
- 
-  generarTurno(tipocategoria: string) {
+  submit(categoria: string) {
     if (this.nombre.trim() === '') {
-       alert('Por favor, ingrese su nombre.');
+      alert('Por favor, ingrese su nombre.');
       return;
     }
 
-    // Guardar el nombre y tipo de turno en variables locales para mostrar
-    this.nombreGenerado = this.nombre;
-    this.categoria = tipocategoria;
+    // Guardar el nombre y tipo de turno en la variable turno
+    this.turno = {
+      nombre: this.nombre,
+      categoria: categoria
+    };
+
+     // Guardar el turno en localStorage
+     localStorage.setItem('turno', JSON.stringify(this.turno));
 
     // Limpiar el campo de nombre
     this.nombre = '';
 
-    // Mostrar la sección del turno generado
-    this.turnoGenerado = true;
   }
+
+
+  
 
 }
