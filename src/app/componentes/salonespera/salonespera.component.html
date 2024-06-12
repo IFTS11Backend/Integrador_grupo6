@@ -2,6 +2,108 @@
 <app-header></app-header>
 }
 
-<div class="container text-center my-4">
-  <h1>Turnos del dia</h1>
+<div class="container-fluid text-center">
+  <div class="container pt-5">
+    <h1>Turnos del dia</h1>
+  </div>
+
+  <div
+    class="container-fluid pt-5 d-flex flex-row justify-content-center text-wrap"
+  >
+    <div class="categoria border border-black border-top-0 border-bottom-0">
+      <h2>Perros</h2>
+      @for (turno of turnos; track trackById) { @if (turno.categoria ===
+      'perros') {
+      <div class="turno">
+        <button
+          type="button"
+          class="btn btn-light mb-2"
+          (click)="verTurnoDetalle(turno._id)"
+        >
+          {{ turno.numero }}
+        </button>
+      </div>
+      } }
+    </div>
+
+    <div class="categoria">
+      <h2>Gatos</h2>
+      @for (turno of turnos; track trackById) { @if (turno.categoria ===
+      'gatos') {
+      <div class="turno">
+        <button
+          type="button"
+          class="btn btn-light mb-2 mb-2"
+          (click)="verTurnoDetalle(turno._id)"
+        >
+          {{ turno.numero }}
+        </button>
+      </div>
+      }}
+    </div>
+
+    <div class="categoria border border-black border-top-0 border-bottom-0">
+      <h2>Anim. Exóticos</h2>
+      @for (turno of turnos; track trackById) { @if (turno.categoria ===
+      'exoticos') {
+      <div class="turno">
+        <button
+          type="button"
+          class="btn btn-light mb-2"
+          (click)="verTurnoDetalle(turno._id)"
+        >
+          {{ turno.numero }}
+        </button>
+      </div>
+      }}
+    </div>
+
+    <div class="categoria">
+      <h2>Vacunacion</h2>
+      @for (turno of turnos; track trackById) { @if (turno.categoria ===
+      'vacunacion') {
+      <div class="turno">
+        <button
+          type="button"
+          class="btn btn-light mb-2"
+          (click)="verTurnoDetalle(turno._id)"
+        >
+          {{ turno.numero }}
+        </button>
+      </div>
+      }}
+    </div>
+
+    <div class="categoria border border-black border-top-0 border-bottom-0">
+      <h2>Compras</h2>
+      @for (turno of turnos; track trackById) { @if (turno.categoria ===
+      'compras') {
+      <div class="turno">
+        <button
+          type="button"
+          class="btn btn-light mb-2"
+          (click)="verTurnoDetalle(turno._id)"
+        >
+          {{ turno.numero }}
+        </button>
+      </div>
+      }}
+    </div>
+  </div>
+</div>
+
+<div class="container Botonera">
+  <div
+    class="turno d-flex flex-row-reverse align-items-center justify-content-end"
+  >
+    <div class="d-block TurnoDetalle">
+      <p>
+        Nombre: <span class="ps-4">{{ turno?.nombre }}</span>
+      </p>
+
+      <p>
+        Categoria: <span class="ps-4">{{ turno?.categoria }}</span>
+      </p>
+    </div>
+  </div>
 </div>
