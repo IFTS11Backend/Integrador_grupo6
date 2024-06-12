@@ -24,7 +24,6 @@ export class CategoriaDetalleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private turnoService: TurnoService,
-    private router: Router,
     private turnoProviderService: TurnoProviderService
   ) {
     this.url = this.route.snapshot.url[0].path;

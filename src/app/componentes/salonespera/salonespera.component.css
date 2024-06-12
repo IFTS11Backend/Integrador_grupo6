@@ -1,0 +1,26 @@
+
+.categoria {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.categoria h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  height: 5rem;
+  width: 8rem;
+  font-size: 2rem;
+}
+
+.turno {
+  padding: 0px 2em;
+}
+
+p{
+  font-size: 1.5em;
+  font-weight: bold;
+}
