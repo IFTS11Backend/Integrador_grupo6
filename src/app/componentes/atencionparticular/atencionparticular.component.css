@@ -1,0 +1,31 @@
+.turno{
+    border: 1px solid lightgray;
+    border-radius: 25px;;
+    height: 10rem;
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 3rem;
+}
+
+
+.btn-dander .btn-light{
+    border-radius: 26px;
+}
+
+.Botonera{
+    display: inline-block;
+    width: 10rem;
+    flex-direction: column;    
+}
+
+.ContenedorBotoneraYDetalle{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+
