@@ -2,3 +2,32 @@ a{
     cursor: pointer;
     text-decoration: none;
 }
+
+.containerEntrada {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.name-input {
+    font-size: 25px; 
+    width: 300px; 
+    padding: 8px; 
+}
+
+#pruebaDatos{
+  
+    border: 5px solid #007bff; 
+    padding: 10px; 
+    margin-bottom: 20px;
+    font-size: 24px;
+
+}
+ .col{
+    font-size: 28px;
+
+ }
+

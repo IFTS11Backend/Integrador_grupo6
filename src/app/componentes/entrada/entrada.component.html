@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid my-2">
+  <div class="container-fluid">
     <button
       class="navbar-toggler"
       type="button"
@@ -27,13 +27,118 @@
   </div>
 </nav>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 
 <div class="container-fluid">
   <div class="container text-center mt-4">
     <h1>Turnero Web</h1>
     <h2>Que pase el que sigue...</h2>
+  </div>
+
+  <!-- Codigo para entrada -->
+  <div class="containerEntrada">
+    <h1>Escriba su nombre:</h1>
+    <input
+      type="text"
+      placeholder="Ingrese su nombre aqui"
+      class="name-input"
+      [(ngModel)]="nombre"
+    />
+  </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submit('Perros')"
+        >
+          <img
+            src="../../../assets/img/perrotpb2.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </button>
+        <strong>Perros</strong>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="submit('Gatos')">
+          <img
+            src="../../../assets/img/gatotpb2.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </button>
+        <strong>Gatos</strong>
+      </div>
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submit('Animales Exoticos')"
+        >
+          <img
+            src="../../../assets/img/exoticostpb2.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </button>
+        <strong>Animales Exoticos</strong>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submit('Vacunacion')"
+        >
+          <img
+            src="../../../assets/img/vacunatpb2.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </button>
+        <strong>Vacunacion</strong>
+      </div>
+      <div class="col">
+        <img
+          src="../../../assets/img/logo-removebg.png"
+          class="img-fluid"
+          alt="..."
+        />
+      </div>
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submit('Compras')"
+        >
+          <img
+            src="../../../assets/img/comprastpb2.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </button>
+        <strong>Compras</strong>
+      </div>
+    </div>
+    <br />
+
+    <!-- Mostrar turno -->
+
+    <!-- <div  id="pruebaDatos">
+          <h2>Turno Generado</h2>
+          <p>Nombre: {{ turno.nombre }}</p>
+          <p>Tipo de Turno: {{ turno.categoria }}</p>
+        </div> -->
+
+    <br /><br />
   </div>
 </div>
