@@ -17,8 +17,8 @@ export class TurnoService {
     return this.http.get<ITurno[]>(`${this.apiTurnos}`);
   }
 
-  getDataById(id : number): Observable<ITurno> {
-    return this.http.get<ITurno>(`${this.apiTurnos}/${id}`);
+  getDataById(id : string): Observable<ITurno[]> {
+    return this.http.get<ITurno[]>(`${this.apiTurnos}/${id}`);
   }
 
   postData(turno : Object): Observable<ITurno> {
@@ -32,8 +32,5 @@ export class TurnoService {
   updateData(turno: ITurno): Observable<string> {
     return this.http.put(`${this.apiTurnos}/${turno._id}`, turno, { responseType: 'text' });
   }
-  // updateData(turno : ITurno) : Observable<ITurno> {
-  //   return this.http.put<ITurno>(`${this.apiTurnos}/${turno._id}`, turno);
-  // }
 
 }

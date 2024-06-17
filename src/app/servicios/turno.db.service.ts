@@ -25,7 +25,7 @@ export class TurnoDbService {
     this.loadInitialData();
   }
 
-  private loadInitialData(): void {
+  loadInitialData(): void {
     this.turnoService.getData().subscribe(turnos => {
       this.listaTurnosSubject.next(turnos);
     });

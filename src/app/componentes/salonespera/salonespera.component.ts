@@ -3,9 +3,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { CategoriaDetalleComponent } from '../categoria-detalle/categoria-detalle.component';
 import { ITurno } from '../../interfaces/ITurno';
-import { TurnoProviderService } from '../../servicios/turno.provider.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { TurnoDbService } from '../../servicios/turno.db.service';
+import { TurnoService } from '../../servicios/turno.service';
 
 @Component({
   selector: 'app-salonespera',
@@ -21,37 +21,39 @@ export class SalonesperaComponent implements OnInit, OnDestroy {
   turno: any = {}; //turno seleccionado
 
   turnos: ITurno[] = []; //todos los turnos
-  turnoSeleccionado: any = []; //busca el turno seleccionado por id
-  turnoSubscription: Subscription = new Subscription();
-  listaSubcription: Subscription = new Subscription();
+
 
   constructor(
     private route: ActivatedRoute,
-    private turnoProviderService: TurnoProviderService
+    private turnoDbService: TurnoDbService,
+    private turnoService : TurnoService
   ) {
     this.url = this.route.snapshot.url[0].path;
     console.log('url', this.url);
   }
 
   ngOnInit(): void {
-    this.listaSubcription = this.turnoProviderService.listaTurnos$.subscribe(
-      (lista) => {
-        this.turnos = lista;
-        console.log('Lista de turnos:', this.turnos);
-      }
-    );
-    this.turnoSubscription =
-      this.turnoProviderService.turnoSeleccionado$.subscribe((turno) => {
-        this.turno = turno;
-        console.log('Turno actualizado:', this.turno);
-      });
+    this.route.url.subscribe(() => {
+      this.loadTurnos();
+    })
   }
 
   ngOnDestroy(): void {
-    if (this.turnoSubscription || this.listaSubcription) {
-      this.turnoSubscription.unsubscribe();
-      this.listaSubcription.unsubscribe();
-    }
+
+  }
+
+  loadTurnos(): void {
+    this.turnoDbService.listaTurnos$.subscribe((data: ITurno[]) => {
+      console.log("Cargando turnos..");
+      try {
+        if (data) {
+          console.log(data);
+          this.turnos = data;
+        }
+      } catch (error) {
+        console.error('Error al cargar los turnos:', error);
+      }
+    });
   }
 
   /**
@@ -61,12 +63,17 @@ export class SalonesperaComponent implements OnInit, OnDestroy {
    */
   verTurnoDetalle(id: string): void {
     try {
-      this.turnoSeleccionado = this.turnos.find((turno) => turno._id === id);
-      //gurda el turno seleccionado en el servicio interno
-      this.turnoProviderService.setTurnoSeleccionado(this.turnoSeleccionado);
-      console.log(this.turnoSeleccionado);
+      this.turnoService.getDataById(id).subscribe({
+        next: (response) => {
+          console.log('Turno obtenido:', response[0]);
+          this.turno = response[0];
+        },
+        error: (error) => {
+          console.error('Error al obtener turno:', error);
+        }
+      });
     } catch (error) {
-      console.log('Error al seleccionar el turno:', error);
+      console.log('Error al obtener turno:', error);
     }
   }
 

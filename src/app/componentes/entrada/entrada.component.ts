@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TurnoService } from '../../servicios/turno.service';
+import { TurnoDbService } from '../../servicios/turno.db.service';
 
 @Component({
   selector: 'app-entrada',
@@ -11,8 +12,9 @@ import { TurnoService } from '../../servicios/turno.service';
   styleUrl: './entrada.component.css'
 })
 export class EntradaComponent {
+  TurnoDbService: any;
 
-  constructor(private turnoService: TurnoService){
+  constructor(private turnoService: TurnoService, private turnoDbService: TurnoDbService){
 
   }
   nombre: string = '';
@@ -37,16 +39,13 @@ export class EntradaComponent {
     this.turnoService.postData(additionalData).subscribe({
       next: (response) => {
         console.log('Respuesta de actualización:', response);
+        this.turnoDbService.loadInitialData();
       },
       error: (error) => {
         console.error('Error actualizando el turno:', error);
       }
     });
-    
-    // Guardar el turno en localStorage
-    //  localStorage.setItem('turno', JSON.stringify(this.turno));
 
-    // Limpiar el campo de nombre
     this.nombre = '';
 
   }
