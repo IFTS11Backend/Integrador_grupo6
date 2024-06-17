@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common'; // Necesario para las directivas
 export class TurnosComponent implements OnInit {
 
   categoria: string = ''; // Ejemplo: localhost:.../.../categoria/perros...vacunacion...etc
-  id: string = ''; // Ejemplo: localhost:.../.../1234
+  // id: string = ''; // Ejemplo: localhost:.../.../1234
 
   turnos: ITurno[] = [];
   turnosFiltrados: ITurno[] = [];
@@ -35,8 +35,8 @@ export class TurnosComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoria = params['nombre'];
-      this.id = params['id'];
-      this.handleCloseModal();
+      // this.id = params['id'];
+      // this.handleCloseModal();
       this.loadTurnos();
     });
   }
