@@ -8,6 +8,16 @@ import { ITurno } from '../interfaces/ITurno';
 })
 export class TurnoDbService {
 
+  turno: ITurno = {
+    _id: '',
+    fecha: '',
+    hora: '',
+    categoria: '',
+    numero: 0,
+    nombre: '',
+    estado: ''
+  };
+
   private listaTurnosSubject = new BehaviorSubject<ITurno[]>([]);
   listaTurnos$ = this.listaTurnosSubject.asObservable();
 
@@ -25,17 +35,16 @@ export class TurnoDbService {
     return this.listaTurnos$;
   }
 
- updateTurno(turno: ITurno): void {
-    this.turnoService.updateData(turno).subscribe(response => {
-      console.log('Respuesta de actualización:', response);
-      this.loadInitialData();
-    }, error => {
-      console.error('Error actualizando el turno:', error);
+  updateTurno(turno: ITurno): void {
+    this.turnoService.updateData(turno).subscribe({
+      next: (response) => {
+        console.log('Respuesta de actualización:', response);
+        this.loadInitialData();
+      },
+      error: (error) => {
+        console.error('Error actualizando el turno:', error);
+      }
     });
   }
-  // updateTurno(turno: ITurno): void {
-  //   this.turnoService.updateData(turno).subscribe(() => {
-  //     this.loadInitialData();
-  //   });
-  // }
+
 }

@@ -9,7 +9,6 @@ import { ITurno } from '../interfaces/ITurno';
 export class TurnoService {
   constructor(private http: HttpClient) {}
 
-
   // private apiTurnos = 'http://localhost:3000/turnos'; //json-server
   private apiTurnos = 'http://localhost:3000/api/turneroweb'; //api
 
@@ -22,8 +21,8 @@ export class TurnoService {
     return this.http.get<ITurno>(`${this.apiTurnos}/${id}`);
   }
 
-  postData(turno : ITurno): Observable<string> {
-    return this.http.post(`${this.apiTurnos}`, turno, { responseType: 'text' });
+  postData(turno : Object): Observable<ITurno> {
+    return this.http.post<ITurno>(`${this.apiTurnos}`, turno);
   }
 
   deleteData(id : number): Observable<void> {
