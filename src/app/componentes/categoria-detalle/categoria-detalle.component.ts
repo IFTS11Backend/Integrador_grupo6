@@ -38,6 +38,7 @@ export class CategoriaDetalleComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.categoria = params['nombre'];
       this.id = params['id'];
+      console.log('categoria', this.categoria);
       this.loadTurnos();
     });
   }

@@ -9,8 +9,10 @@ import { ITurno } from '../interfaces/ITurno';
 export class TurnoService {
   constructor(private http: HttpClient) {}
 
+
   // private apiTurnos = 'http://localhost:3000/turnos'; //json-server
   private apiTurnos = 'http://localhost:3000/api/turneroweb'; //api
+
 
   getData(): Observable<ITurno[]> {
     return this.http.get<ITurno[]>(`${this.apiTurnos}`);
