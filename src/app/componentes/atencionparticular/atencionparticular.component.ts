@@ -5,6 +5,7 @@ import { CategoriaDetalleComponent } from '../categoria-detalle/categoria-detall
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { Subscription } from 'rxjs';
 import { TurnoProviderService } from '../../servicios/turno.provider.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-atencionparticular',
@@ -13,7 +14,7 @@ import { TurnoProviderService } from '../../servicios/turno.provider.service';
     HeaderComponent,
     CategoriaDetalleComponent,
     NavbarComponent,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './atencionparticular.component.html',
   styleUrl: './atencionparticular.component.css',
@@ -26,7 +27,8 @@ export class AtencionparticularComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private turnoProviderService: TurnoProviderService
+    private turnoProviderService: TurnoProviderService,
+    private toastSvc: ToastrService
   ) {
     this.url = this.route.snapshot.url[0].path;
     console.log('url', this.url);
@@ -52,6 +54,7 @@ export class AtencionparticularComponent {
     if (turnoAmodificar) {
       const turno = JSON.parse(turnoAmodificar);
       turno.estado = 'Cancelado';
+      this.toastSvc.error('Turno cancelado');
       this.turnoProviderService.setTurnoSeleccionado(turno);
     }
   }
@@ -62,6 +65,7 @@ export class AtencionparticularComponent {
     if (turnoAmodificar) {
       const turno = JSON.parse(turnoAmodificar);
       turno.estado = 'Atendiendo';
+      this.toastSvc.success('Atendiendo turno');
       this.turnoProviderService.setTurnoSeleccionado(turno);
     }
   }
@@ -72,11 +76,19 @@ export class AtencionparticularComponent {
     if (turnoAmodificar) {
       const turno = JSON.parse(turnoAmodificar);
       turno.estado = 'Atendido';
+      this.toastSvc.warning('Turno finalizado');
       this.turnoProviderService.setTurnoSeleccionado(turno);
     }
   }
 
-  eliminarTodo() {
-    this.turnoProviderService.resetTurnos();
+  enEsperaTurno() {
+    //obtener el turnoSeleccionado del localstorage y modificar el estado a finalizado
+    const turnoAmodificar = localStorage.getItem('turnoSeleccionado');
+    if (turnoAmodificar) {
+      const turno = JSON.parse(turnoAmodificar);
+      turno.estado = 'en espera';
+      this.toastSvc.info('Turno en espera nuevamente');
+      this.turnoProviderService.setTurnoSeleccionado(turno);
+    }
   }
 }
