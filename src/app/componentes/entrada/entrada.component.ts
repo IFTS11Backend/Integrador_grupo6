@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CTurno } from '../../interfaces/CTurno';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-entrada',
@@ -13,7 +15,8 @@ export class EntradaComponent {
 
   nombre: string = '';
   turnoGenerado: boolean = false;
-  turno: { nombre: string, categoria: string } = { nombre: '', categoria: '' };
+  fecha:string = formatDate(new Date(), 'yyyy-mm-dd', 'es');
+  hora:string = formatDate(new Date(), 'hh:mm', 'es');
 
   submit(categoria: string) {
     if (this.nombre.trim() === '') {
@@ -21,21 +24,19 @@ export class EntradaComponent {
       return;
     }
 
-    // Guardar el nombre y tipo de turno en la variable turno
-    this.turno = {
+    const turno = {
+      fecha: this.fecha,
+      hora: this.hora,
       nombre: this.nombre,
-      categoria: categoria
+      categoria: categoria,
+      numero: 0
     };
 
-     // Guardar el turno en localStorage
-     localStorage.setItem('turno', JSON.stringify(this.turno));
-
+    TurnoService.crearTurno(turno).subscribe((data: any) => {
+      console.log('Turno creado:', data);
+    });
+    
     // Limpiar el campo de nombre
     this.nombre = '';
-
   }
-
-
-  
-
 }
