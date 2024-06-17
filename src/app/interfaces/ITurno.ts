@@ -7,3 +7,12 @@ export interface ITurno {
   nombre: string;
   estado: string;
 }
+
+
+export interface CTurno {
+  fecha: string;
+  hora: string;
+  categoria: string;
+  nombre: string;
+  estado: string;
+}

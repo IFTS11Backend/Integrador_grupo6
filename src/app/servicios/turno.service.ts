@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITurno } from '../interfaces/ITurno';
+import { CTurno, ITurno } from '../interfaces/ITurno';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +16,9 @@ export class TurnoService {
     return this.http.get<ITurno[]>(`${this.turnero}`);
   }
 
-  crearTurno(turno: ITurno): Observable<ITurno> {
+  crearTurno(turno: CTurno): Observable<CTurno> {
     console.log('Turno:', turno);
-    return this.http.post<ITurno>(`${this.turnero}`, turno, {
+    return this.http.post<CTurno>(`${this.turnero}`, turno, {
       headers: {
         'Content-Type': 'application/json',
       },
