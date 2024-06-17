@@ -28,6 +28,7 @@ export class EntradaComponent {
     }
       const fecha = new Date();
       const additionalData = {
+        _id: '0',
         fecha: fecha.toLocaleDateString(),
         hora: fecha.toLocaleTimeString(),
         categoria: categoria,

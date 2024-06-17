@@ -1,5 +1,5 @@
 export interface ITurno {
-  _id?: string;
+  _id: string;
   fecha: string;
   hora: string;
   categoria: string;
