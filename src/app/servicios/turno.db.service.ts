@@ -8,7 +8,7 @@ import { ITurno } from '../interfaces/ITurno';
 })
 export class TurnoDbService {
 
-  turno: ITurno = {
+  initialTurno: ITurno = {
     _id: '',
     fecha: '',
     hora: '',
@@ -20,6 +20,9 @@ export class TurnoDbService {
 
   private listaTurnosSubject = new BehaviorSubject<ITurno[]>([]);
   listaTurnos$ = this.listaTurnosSubject.asObservable();
+
+  turnoSelectedSubject = new BehaviorSubject<ITurno>(this.initialTurno);
+  turnoSelected$ = this.turnoSelectedSubject.asObservable();
 
   constructor(private turnoService: TurnoService) {
     this.loadInitialData();

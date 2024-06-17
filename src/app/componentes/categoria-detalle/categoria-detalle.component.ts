@@ -3,7 +3,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ITurno } from '../../interfaces/ITurno';
 import { TurnoService } from '../../servicios/turno.service';
-import { TurnoProviderService } from '../../servicios/turno.provider.service';
+import { TurnoDbService } from '../../servicios/turno.db.service';
 
 @Component({
   selector: 'app-categoria-detalle',
@@ -19,13 +19,15 @@ export class CategoriaDetalleComponent implements OnInit {
 
   turnos: ITurno[] = []; //todos los turnos
   turnosFiltrados: ITurno[] = []; //filtra los objetos coincidentes con la categoria especifica
-  turnoSeleccionado: any = []; //busca el turno seleccionado por id
+
+  turno: any = {}; //turno seleccionado
+
 
   constructor(
     private route: ActivatedRoute,
     private turnoService: TurnoService,
     private router: Router,
-    private turnoProviderService: TurnoProviderService
+    private turnoDbService: TurnoDbService
   ) {
     this.url = this.route.snapshot.url[0].path;
     console.log('url', this.url);
@@ -37,30 +39,31 @@ export class CategoriaDetalleComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoria = params['nombre'];
-      this.id = params['id'];
-      console.log('categoria', this.categoria);
+      // this.id = params['id'];
+      // console.log('categoria', this.categoria);
       this.loadTurnos();
     });
   }
-
+  
+  setTurnoSelected(): void {
+    this.turnoDbService.turnoSelectedSubject.next(this.turno);
+  }
+  
   /**
    * Cargamos los turnos desde el servicio de la api (turnoService) en principio, para luego
    * trabajar sobre eventos que emulan las acciones con una base de datos.
    */
   loadTurnos(): void {
-    this.turnoService.getData().subscribe((data: ITurno[]) => {
+    this.turnoDbService.listaTurnos$.subscribe((data: ITurno[]) => {
       try {
-        this.turnos = data;
-        //reservamos la lista original en el local storage y se pasa a usar el servicio proveedor (turnoProviderService)
-        this.turnoProviderService.setTurnos(this.turnos);
-        if (this.categoria) {
-          this.verTurnosPorCategoria(this.categoria);
-        }
-        if (this.id) {
-          this.verTurnoDetalle(this.id);
+        if (data) {
+          this.turnos = data;
+          if (this.categoria) {
+            this.verTurnosPorCategoria(this.categoria);
+          }
         }
       } catch (error) {
-        console.log('Error al cargar los turnos:', error);
+        console.error('Error al cargar los turnos:', error);
       }
     });
   }
@@ -75,7 +78,6 @@ export class CategoriaDetalleComponent implements OnInit {
       this.turnosFiltrados = this.turnos.filter(
         (turno) => turno.categoria === categoria
       );
-      console.log('turnosFiltrados', this.turnosFiltrados);
     } catch (error) {
       console.log('Error al filtrar los turnos por categoria:', error);
     }
@@ -88,15 +90,30 @@ export class CategoriaDetalleComponent implements OnInit {
    */
   verTurnoDetalle(id: string): void {
     try {
-      this.turnoSeleccionado = this.turnos.find((turno) => turno._id === id);
-      //gurda el turno seleccionado en el servicio interno
-      this.turnoProviderService.setTurnoSeleccionado(this.turnoSeleccionado);
-      console.log(this.turnoSeleccionado);
+      this.turnoService.getDataById(id).subscribe({
+        next: (response) => {
+          // console.log('Turno obtenido:', response[0]);
+          this.turno = response[0];
+          this.setTurnoSelected();
+        },
+        error: (error) => {
+          console.error('Error al obtener turno:', error);
+        }
+      });
     } catch (error) {
-      console.log('Error al seleccionar el turno:', error);
+      console.log('Error al obtener turno:', error);
     }
   }
 
+  cancelarTurno() {
+    const turnoActualizado = { ...this.turno, estado: 'Cancelado' };
+    this.turnoDbService.updateTurno(turnoActualizado);
+  }
+  
+  eliminarTodo(){
+    // this.turnoProviderService.resetTurnos();
+  }
+  
   /**
    * Funcion 'helper' para indexar mejor los datos en el iterado del template
    * @param index 
