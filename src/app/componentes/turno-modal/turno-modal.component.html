@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="turno-modal d-flex flex-row-reverse align-items-center justify-content-around">
+      <div class="d-block TurnoDetalle">
+        <p>Nombre: {{turno.nombre}}</p>
+        <p>Categoria: {{turno.categoria}}</p>
+      </div>
+      <div class="d-flex flex-row align-items-center justify-content-center">
+        <app-boton 
+          title="Atendido"
+          content="Atendido"
+          image="✔"
+          (click)="updateTurno('Atendido')"
+        ></app-boton> 
+        <app-boton 
+          title="Atendiendo"
+          content="Atender"
+          image="🔔"
+          (click)="updateTurno('Atendiendo')"
+        ></app-boton> 
+        <app-boton 
+          title="Cancelado"
+          content="Cancelar"
+          image="❌"
+          (click)="updateTurno('Cancelado')"
+        ></app-boton> 
+      </div>
+      <button (click)="closeModal()" class="turno-modal__close">Cerrar</button>
+    </div>
+  </div>
+  

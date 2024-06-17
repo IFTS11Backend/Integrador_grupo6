@@ -1,0 +1,14 @@
+tr{
+    cursor: pointer;
+    border: 1px solid lightgray;
+}
+th{
+    font-size: 4em;
+    padding: 0px 20px; ;
+}
+
+tbody{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

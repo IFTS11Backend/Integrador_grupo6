@@ -1,0 +1,24 @@
+<div class="container">
+    @if(turnosFiltrados.length > 0){
+    <table class="table table-hover">
+      <tbody>
+        @for(turno of turnosFiltrados; track trackById){
+        <tr class="text-center">
+          <th (click)="handleOpenModal(turno._id)">
+            {{ turno.numero }}
+          </th>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+  
+  @if(modalIsOpen){
+    <app-turno-modal 
+      [turno]="turnoSeleccionado"
+      (cerrarModal)="handleCloseModal()">
+    </app-turno-modal>
+  }
+
+  

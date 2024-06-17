@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <!-- Columna Izquierda -->
+
+  <!-- Inicio Row General -->
+  <div class="row">
+    <!-- Categoria -->
+    <div class="col order-first d-flex flex-column justify-content-between border">
+      <div class="align-self-start">
+        <div class="titulo">
+          <h3>{{ categoria }}</h3>
+        </div>
+      </div>
+
+      <!-- Fecha y Hora -->
+      <div class="d-flex align-self-start">
+        <!-- <div class="d-flex justify-content-end align-items-end"> --> 
+        <h2 class="fecha_hora">{{ currentDate | date: 'dd/MM/yyyy' }}</h2>
+        <h2>{{ currentDate | date: 'HH:mm:ss' }}</h2>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <!-- Columna Derecha -->
+
+    <div class="col order-last border">
+      <!-- Inicio Row -->
+      <div class="row">
+        <!-- Titulo -->
+        <div
+          class="col order-first d-flex justify-content-start align-items-end"
+        >
+          <div class="titulo">
+            <h3>Turnero Web</h3>
+          </div>
+        </div>
+        <!-- Logo -->
+        <div class="col order-last">
+          <article class="align-items-end">
+            <a routerLink="/">
+              <img
+                src="../../../assets/img/logo-removebg.png"
+                alt="Logo"
+                title="Volver al Inicio"
+                class="img-fluid bg-transparent"
+                width="200"
+              />
+            </a>
+          </article>
+        </div>
+      </div>
+      <!-- Fin Row -->
+    </div>
+  </div>
+  <!-- Fin Row General -->
+</div>
