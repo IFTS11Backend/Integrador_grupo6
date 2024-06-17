@@ -2,12 +2,12 @@
     border: 1px solid lightgray;
     border-radius: 25px;;
     height: 10rem;
-    width: 35rem;
+    width: 38rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    padding-left: 3rem;
+    padding-left: 1rem;
 }
 
 

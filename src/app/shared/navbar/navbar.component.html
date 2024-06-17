@@ -2,7 +2,7 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['categoria', 'perros']">Perros</a>
+                <a class="nav-link" [routerLink]="['categoria', 'perros']" [ngClass]="{active: categoryOption == 'perros'}">Perros</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['categoria', 'gatos']">Gatos</a>
