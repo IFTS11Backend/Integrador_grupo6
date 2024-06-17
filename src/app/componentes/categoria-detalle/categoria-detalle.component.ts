@@ -104,15 +104,6 @@ export class CategoriaDetalleComponent implements OnInit {
       console.log('Error al obtener turno:', error);
     }
   }
-
-  cancelarTurno() {
-    const turnoActualizado = { ...this.turno, estado: 'Cancelado' };
-    this.turnoDbService.updateTurno(turnoActualizado);
-  }
-  
-  eliminarTodo(){
-    // this.turnoProviderService.resetTurnos();
-  }
   
   /**
    * Funcion 'helper' para indexar mejor los datos en el iterado del template
