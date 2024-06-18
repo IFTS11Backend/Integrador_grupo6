@@ -13,8 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './entrada.component.css'
 })
 export class EntradaComponent {
-  TurnoDbService: any;
-
+  
   constructor(private turnoService: TurnoService, private turnoDbService: TurnoDbService, private toastSvc: ToastrService){
 
   }

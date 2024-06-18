@@ -58,6 +58,9 @@ export class AtencionseguridadComponent implements OnInit {
     this.turnoDbService.updateTurno(turnoActualizado);
     this.turnoDbService.turnoSelectedSubject.next(turnoActualizado);
     this.toastSvc.warning('Turno cancelado', 'Turno');
+    setTimeout(() => {
+      window.location.reload(); // Recarga toda la página
+    }, 1200);
   }
   
   eliminarTodo(){

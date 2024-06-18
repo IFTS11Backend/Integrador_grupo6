@@ -1,10 +1,10 @@
 <div class="container">
   @if(turnosFiltrados.length > 0){
-  <table class="table table-hover">
+  <table class="table">
     <tbody>
-      @for(turno of turnosFiltrados; track trackById){
       <tr class="text-center">
-        <th
+        @for(turno of turnosFiltrados; track trackById){
+        <th class="border border-left"
           (click)="handleOpenModal(turno._id)"
           [ngClass]="{
             'estado-pendiente': turno.estado === 'en espera',
@@ -15,8 +15,8 @@
         >
           {{ turno.numero }}
         </th>
-      </tr>
       }
+      </tr>
     </tbody>
   </table>
   }

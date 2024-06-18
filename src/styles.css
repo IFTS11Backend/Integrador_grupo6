@@ -13,11 +13,17 @@
 /*cancelado*/
 .estado-cancelado {
   background-color: #fa8282;
-  display: none;
+  /* display: none; */
 }
 
 /*atendido*/
 .estado-finalizado{
   background-color: #8d8df5;
-  display: none;
+  /* display: none; */
+}
+
+.BotonInformacion{
+  position: absolute;
+  z-index: 999;
+  margin-top: 12rem;
 }

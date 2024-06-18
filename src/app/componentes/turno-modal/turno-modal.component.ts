@@ -40,5 +40,8 @@ export class TurnoModalComponent implements OnInit {
     const turnoActualizado = { ...this.turno, estado: estado };
     this.turnoDbService.updateTurno(turnoActualizado);
     this.toastSvc.info('Turno actualizado', 'Turno');
+    setTimeout(() => {
+      window.location.reload(); // Recarga toda la página
+    }, 1000);
   }
 }

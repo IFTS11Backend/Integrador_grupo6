@@ -1,10 +1,10 @@
 <div class="container">
   <!-- Muestra cada turno del arreglo-->
   @if(turnosFiltrados.length > 0){
-  <table class="table table-hover">
+  <table class="table">
     <tbody>
-      @for(turno of turnosFiltrados; track trackById){
       <tr class="text-center">
+        @for(turno of turnosFiltrados; track trackById){
         @if (turno) {
         <th
           [ngClass]="{
@@ -18,8 +18,8 @@
           {{ turno.numero }}
         </th>
         }
-      </tr>
       }
+      </tr>
     </tbody>
   </table>
   }

@@ -1,0 +1,28 @@
+span{
+    margin: 0px 1rem;
+}
+
+.offcanvas.offcanvas-start{
+    width: 50vw;
+}
+
+/*cancelado*/
+.estado-cancelado {
+  background-color: #fa8282;
+}
+
+/*atendido*/
+.estado-finalizado{
+  background-color: #8d8df5;
+}
+
+.card{
+    cursor: pointer;
+}
+
+/* primer <p> font weight bolder */
+.card p:first-of-type{
+    font-weight: bolder;
+    text-align: center;
+    align-self: center;
+}

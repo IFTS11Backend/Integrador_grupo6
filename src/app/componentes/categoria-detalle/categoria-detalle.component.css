@@ -7,6 +7,10 @@ th{
     padding: 0px 20px; ;
 }
 
+th:hover{
+    background-color: #6c757d5c;
+}
+
 tbody{
     display: flex;
     flex-direction: row;

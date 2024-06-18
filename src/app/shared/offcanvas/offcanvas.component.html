@@ -1,0 +1,80 @@
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id="offcanvasWithBothOptions"
+  aria-labelledby="offcanvasWithBothOptionsLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+      Listado de Cancelados y Atendido
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column">
+      @for(item of listaFiltrada; track item._id){ @if (item.estado ===
+      'Cancelado') {
+      <div
+        class="card m-0 p-0"
+        [ngClass]="{          
+                'estado-cancelado': item.estado === 'Cancelado',
+              }"
+      >
+        <div class="card-body m-0 p-0 d-flex flex-row justify-content-around">
+          <p>{{ item.numero }}</p>
+          <p>{{ item.nombre }}</p>
+          <p>{{ item.categoria }}</p>
+          <p>{{ item.estado }}</p>
+          <p>{{ item.hora }}p.m</p>
+          <button
+            title="Restaurar Item"
+            type="button"
+            class="border-0 bg-transparent"
+            (click)="recuperarTurno(item)"
+          >
+            <img
+              src="../../../assets/img/restaurar.svg"
+              alt="Restaurar Item Img"
+              width="35"
+            />
+          </button>
+        </div>
+      </div>
+      } @for(item of listaFiltrada; track item._id){ } @if(item.estado ===
+      'Atendido') {
+      <div
+        class="card m-0 p-0"
+        [ngClass]="{          
+                'estado-finalizado': item.estado === 'Atendido',
+              }"
+      >
+        <div class="card-body m-0 p-0 d-flex flex-row justify-content-around">
+          <p>{{ item.numero }}</p>
+          <p>{{ item.nombre }}</p>
+          <p>{{ item.categoria }}</p>
+          <p>{{ item.estado }}</p>
+          <p>{{ item.hora }}p.m</p>
+          <button
+            title="Restaurar Item"
+            type="button"
+            class="border-0 bg-transparent"
+            (click)="recuperarTurno(item)"
+          >
+            <img
+              src="../../../assets/img/restaurar.svg"
+              alt="Restaurar Item Img"
+              width="35"
+            />
+          </button>
+        </div>
+      </div>
+      } }
+    </div>
+  </div>
+</div>
