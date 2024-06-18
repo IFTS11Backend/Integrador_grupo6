@@ -12,11 +12,13 @@
 /*cancelado*/
 .estado-cancelado {
   background-color: #fa8282;
+  display: none;
 }
 
 /*atendido*/
 .estado-finalizado{
   background-color: #8d8df5;
+  display: none;
 }
 
 

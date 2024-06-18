@@ -50,7 +50,7 @@ export class AtencionseguridadComponent implements OnInit {
       } catch (error) {
         console.error('Error al cargar los turnos:', error);
       }
-    });
+    })
   }
   
   cancelarTurno() {
