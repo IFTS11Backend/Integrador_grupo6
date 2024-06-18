@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TurnoService } from '../../servicios/turno.service';
 import { TurnoDbService } from '../../servicios/turno.db.service';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-entrada',

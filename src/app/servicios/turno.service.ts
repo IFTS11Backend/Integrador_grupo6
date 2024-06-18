@@ -28,6 +28,11 @@ export class TurnoService {
   deleteData(id : number): Observable<void> {
     return this.http.delete<void>(`${this.apiTurnos}/${id}`);
   }
+
+  resetTodos(): Observable<void> {
+    return this.http.delete<void>(`${this.apiTurnos}/resetdia`);
+  
+  }
   
   updateData(turno: ITurno): Observable<string> {
     return this.http.put(`${this.apiTurnos}/${turno._id}`, turno, { responseType: 'text' });

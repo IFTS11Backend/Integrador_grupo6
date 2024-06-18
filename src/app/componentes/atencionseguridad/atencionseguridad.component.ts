@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TurnoDbService } from '../../servicios/turno.db.service';
 import { ITurno } from '../../interfaces/ITurno';
 import { ToastrService } from 'ngx-toastr';
+import { TurnoService } from '../../servicios/turno.service';
 
 @Component({
   selector: 'app-atencionseguridad',
@@ -27,6 +28,7 @@ export class AtencionseguridadComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private turnoDbService: TurnoDbService,
+    private turnoService: TurnoService,
     private toastSvc: ToastrService
   ) {
     this.url = this.route.snapshot.url[0].path;
@@ -59,6 +61,6 @@ export class AtencionseguridadComponent implements OnInit {
   }
   
   eliminarTodo(){
-    // this.turnoProviderService.resetTurnos();
+    this.turnoService.resetTodos();
   }
 }
