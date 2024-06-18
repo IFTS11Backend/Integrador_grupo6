@@ -5,6 +5,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TurnoDbService } from '../../servicios/turno.db.service';
 import { ITurno } from '../../interfaces/ITurno';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-atencionseguridad',
@@ -26,6 +27,7 @@ export class AtencionseguridadComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private turnoDbService: TurnoDbService,
+    private toastSvc: ToastrService
   ) {
     this.url = this.route.snapshot.url[0].path;
     console.log('url', this.url);
@@ -41,8 +43,8 @@ export class AtencionseguridadComponent implements OnInit {
       try {
         if (data) {
           console.log("Turno seleccionado: ", data);
-          this.turno = data;
-        }
+          this.turno = data;          
+        };
       } catch (error) {
         console.error('Error al cargar los turnos:', error);
       }
@@ -53,6 +55,7 @@ export class AtencionseguridadComponent implements OnInit {
     const turnoActualizado = { ...this.turno, estado: 'Cancelado' };
     this.turnoDbService.updateTurno(turnoActualizado);
     this.turnoDbService.turnoSelectedSubject.next(turnoActualizado);
+    this.toastSvc.warning('Turno cancelado', 'Turno');
   }
   
   eliminarTodo(){

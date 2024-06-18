@@ -5,13 +5,22 @@
     <tbody>
       @for(turno of turnosFiltrados; track trackById){
       <tr class="text-center">
-        <th (click)="verTurnoDetalle(turno._id)">
+        @if (turno) {
+        <th
+          [ngClass]="{
+            'estado-pendiente': turno.estado === 'en espera',
+            'estado-confirmado': turno.estado === 'Atendiendo',
+            'estado-cancelado': turno.estado === 'Cancelado',
+            'estado-finalizado': turno.estado === 'atendido'
+          }"
+          (click)="verTurnoDetalle(turno._id)"
+        >
           {{ turno.numero }}
         </th>
+        }
       </tr>
       }
     </tbody>
   </table>
   }
 </div>
-

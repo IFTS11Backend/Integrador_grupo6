@@ -6,11 +6,12 @@ import { ITurno } from '../../interfaces/ITurno';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TurnoDbService } from '../../servicios/turno.db.service';
 import { TurnoService } from '../../servicios/turno.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-salonespera',
   standalone: true,
-  imports: [HeaderComponent, RouterLink, CategoriaDetalleComponent],
+  imports: [HeaderComponent, RouterLink, CategoriaDetalleComponent, CommonModule],
   templateUrl: './salonespera.component.html',
   styleUrl: './salonespera.component.css',
 })

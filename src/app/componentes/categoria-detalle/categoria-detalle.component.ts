@@ -3,12 +3,13 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ITurno } from '../../interfaces/ITurno';
 import { TurnoService } from '../../servicios/turno.service';
+import { CommonModule } from '@angular/common';
 import { TurnoDbService } from '../../servicios/turno.db.service';
 
 @Component({
   selector: 'app-categoria-detalle',
   standalone: true,
-  imports: [RouterLink, NavbarComponent],
+  imports: [RouterLink, NavbarComponent, CommonModule],
   templateUrl: './categoria-detalle.component.html',
   styleUrl: './categoria-detalle.component.css',
 })

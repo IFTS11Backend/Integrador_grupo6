@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+.estado-pendiente {
+  background-color: #fafa91;
+}
+
+/*atendiendo*/
+.estado-confirmado {
+  background-color: #82fa82;
+}
+
+/*cancelado*/
+.estado-cancelado {
+  background-color: #fa8282;
+}
+
+/*atendido*/
+.estado-finalizado{
+  background-color: #8d8df5;
+}

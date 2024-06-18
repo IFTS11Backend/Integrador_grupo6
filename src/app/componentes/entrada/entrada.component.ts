@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TurnoService } from '../../servicios/turno.service';
 import { TurnoDbService } from '../../servicios/turno.db.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-entrada',
@@ -14,7 +15,7 @@ import { TurnoDbService } from '../../servicios/turno.db.service';
 export class EntradaComponent {
   TurnoDbService: any;
 
-  constructor(private turnoService: TurnoService, private turnoDbService: TurnoDbService){
+  constructor(private turnoService: TurnoService, private turnoDbService: TurnoDbService, private toastSvc: ToastrService){
 
   }
   nombre: string = '';
@@ -23,7 +24,7 @@ export class EntradaComponent {
 
   submit(categoria: string)  {
     if (this.nombre.trim() === '') {
-      alert('Por favor, ingrese su nombre.');
+      this.toastSvc.error('El nombre es requerido', 'Error');
       return;
     }
 
@@ -40,9 +41,11 @@ export class EntradaComponent {
       next: (response) => {
         console.log('Respuesta de actualización:', response);
         this.turnoDbService.loadInitialData();
+        this.toastSvc.success('Turno generado', 'Turno');
       },
       error: (error) => {
         console.error('Error actualizando el turno:', error);
+
       }
     });
 

@@ -2,16 +2,16 @@ import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { ITurno } from '../../interfaces/ITurno';
 import { BotonComponent } from '../../shared/boton/boton.component';
 import { TurnoDbService } from '../../servicios/turno.db.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-turno-modal',
   standalone: true,
   imports: [BotonComponent],
   templateUrl: './turno-modal.component.html',
-  styleUrl: './turno-modal.component.css'
+  styleUrl: './turno-modal.component.css',
 })
-
-export class TurnoModalComponent implements OnInit{
+export class TurnoModalComponent implements OnInit {
   @Output() cerrarModal: EventEmitter<void> = new EventEmitter<void>();
   @Input() turno: ITurno = {
     _id: '',
@@ -20,16 +20,18 @@ export class TurnoModalComponent implements OnInit{
     categoria: '',
     numero: 0,
     nombre: '',
-    estado: ''
+    estado: '',
   };
 
-  constructor(private turnoDbService: TurnoDbService){
+  constructor(
+    private turnoDbService: TurnoDbService,
+    private toastSvc: ToastrService
+  ) {}
+
+  ngOnInit() {
+    console.log('El turno es: ', this.turno);
   }
 
-  ngOnInit(){
-    console.log("El turno es: ", this.turno);
-  }
-  
   closeModal(): void {
     this.cerrarModal.emit();
   }
@@ -37,5 +39,6 @@ export class TurnoModalComponent implements OnInit{
   updateTurno(estado: string): void {
     const turnoActualizado = { ...this.turno, estado: estado };
     this.turnoDbService.updateTurno(turnoActualizado);
+    this.toastSvc.info('Turno actualizado', 'Turno');
   }
 }
